@@ -425,6 +425,27 @@ computer ----> server
 
 8.. use axios to get the api response 
 
+9.. use nodemon to restart it automatically 
+
+10.. install prettier 
+
+11.. make files like app index constants 
+
+12.. in the src make the folder str of DMCRMU
+
+13.. create .gitignore 
+
+14.. add readme 
+
+15.. for prettier add prettierrc and prettierignore 
+
+
+// How to connect DB to backend 
+
+use mongoose.connect and then always think of server is in another continent so use async await try and catch block 
+
+// install nodemon for automatic refresh 
+
 think of the fields before hand 
 
 try to work using mongoose 
