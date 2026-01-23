@@ -575,3 +575,6 @@ metadat  -- key value sent along with request ans response
 . 5xx - Server error 
 
 100 continue ,  102 processing , 200 ok , 201 created , 202 accepted , 400 bad request , 404 not found , 401 unauthorized 
+
+
+// earlier we use to write app.get because at that time our middleware , controller were the same now when we are  using  them differently we will write app.use 
