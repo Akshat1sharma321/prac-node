@@ -409,6 +409,27 @@ computer ----> server
          get request 
 
 
+how to get from the frontend :
+
+<!-- function App() {
+  const [count, setCount] = useState(0)
+  const [jokes , setJokes] = useState([]) 
+
+  useEffect(()=>{
+    axios.get("/api/jokes")
+    .then((response)=>{
+      console.log(response);
+      console.log("Hello");
+      
+      setJokes(response.data)
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  } , []) -->
+
+
+
 1.. npm init 
 
 2.. install express 
@@ -439,12 +460,42 @@ computer ----> server
 
 15.. for prettier add prettierrc and prettierignore 
 
+16.. cookie parser , cors 
+
+// jab url se data aaye to uski config alag se karni padti hai kyunki kai baar space dall jaata 
+
+// agar json me data aaaye form se to uski bhi limit set karni padti hai we have different options
+
+// middleware 
+// req.get --> then method  --  usne url hit kiya  --  me aapko bataonga agar req aagayi to kay karna hai 
+
+--- then me res bhejdunga like res.send("akshat)
+
+--- req to bahut saari aayengi -- sab thodi accept karunga 
+
+-- to beech me cheking lagadi like user logged in hai or may be user admin hai 
+
+-- uske baad me apni compute power use karunga 
+
+---  we have err , req , res , next 
+// db me async awaut and try catch hamesh or may be promises  method 
+
+// we will make a asyncHandler as it is used a lot 
+
+// const fn(fxn) = () =>{
+    log("Hello")
+} : It means ki we are passing a function as a parameter and we expect to return a function in the form arrow function 
+
+
+
 
 // How to connect DB to backend 
 
 use mongoose.connect and then always think of server is in another continent so use async await try and catch block 
 
 // install nodemon for automatic refresh 
+
+// prime focus on req and response 
 
 think of the fields before hand 
 
