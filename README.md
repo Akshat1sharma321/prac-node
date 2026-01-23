@@ -520,4 +520,58 @@ use data modeler or eraser.io
 
 
 ----How to upload the files to the backend ,,,, middleware - jaane se pehle mujhse  milkar jaana 
--->cloudinary is the service used to upload files , express gile upload or multer use to upload the file
+-->cloudinary is the service used to upload files , express gile upload or multer use to upload the file -- ham user se file lenge multer ke through cloudinary aapse file leti and server par upload karte hai ---- ham user se file lenge then temporarily uss file ko local server par store karenge then uss local servewr se usse cloudinary par lekar jaayenge --- waise ham directly bhi kar sakte hai but in production grade settings ye hi hota hai
+
+----we use nodejs inbuilt file system to do the operation on the files 
+
+
+--“GET is used to retrieve data from the server, while POST is used to send data to the server to create or modify resources.”
+
+
+---HTTP 
+-hyper text transfer protocol 
+-https basically encrypt the data 
+-we want send the text in the most optimised  manner 
+- mobile app - client and the server 
+- URL , URI , URN not much different 
+- what are http headers 
+metadat  -- key value sent along with request ans response 
+- caching , authentication , manage state 
+. REquest Header - from client 
+. Request Headers  - from server
+. REpresentation Headers - encoding / compression 
+. Payload Headers  - data
+
+- Most Common Headers 
+. Accept : application /json 
+. user agent like from where postman browser 
+. Authorization like bearer
+. Content - type 
+. Cookie 
+. Cache - control 
+
+- CORS 
+. Origin 
+. Credentials 
+. Method 
+
+- Security 
+
+- HTTP methods 
+. GET : retrieve
+. HEAD : No message body 
+. OPTIONS  :  what operations are available 
+. TRACE   : loopback test
+. DELETE  : remove a resource 
+.PUT : replace a resource
+.POST : interact with resource 
+.PATCH : change part of a resource 
+
+- Status code 
+. 1xx - informational 
+. 2xx - Success
+. 3xx - Redirection 
+. 4xx - Client error 
+. 5xx - Server error 
+
+100 continue ,  102 processing , 200 ok , 201 created , 202 accepted , 400 bad request , 404 not found , 401 unauthorized 
