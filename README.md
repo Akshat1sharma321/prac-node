@@ -462,6 +462,18 @@ how to get from the frontend :
 
 16.. cookie parser , cors 
 
+17.. library --mongoose aggregate paginate is the super power of mongoose 
+
+18.. bcryptjs -- used for hash your password 
+
+19.. jwt -- jsonwebtoken used to make the token 
+
+--- direct encryption is not possible so we will use a pre hook just before the data will be going to save , jwt is bearer token jiske pass ye hota hai usko data bhej dete hai 
+
+
+
+
+
 // jab url se data aaye to uski config alag se karni padti hai kyunki kai baar space dall jaata 
 
 // agar json me data aaaye form se to uski bhi limit set karni padti hai we have different options
@@ -503,3 +515,9 @@ try to work using mongoose
 
 use data modeler or eraser.io
 // plural hojayega and in lowercase me shift hojayega when we are using  mongoose 
+
+
+
+
+----How to upload the files to the backend ,,,, middleware - jaane se pehle mujhse  milkar jaana 
+-->cloudinary is the service used to upload files , express gile upload or multer use to upload the file
