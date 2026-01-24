@@ -11,7 +11,7 @@ super(message)
 this.statuscode = statuscode 
 this.data = null 
 this.message = message 
-this.success = success 
+this.success = false
 this.errors = errors
 
 

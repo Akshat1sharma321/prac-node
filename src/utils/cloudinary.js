@@ -11,29 +11,31 @@ cloudinary.config({
 
 
   // Upload an image
-  const uploadResult = await cloudinary.uploader
-    .upload(
-      "https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",
-      {
-        public_id: "shoes",
-      }
-    )
-    .catch((error) => {
-      console.log(error);
-    });
+//   const uploadResult = await cloudinary.uploader
+//     .upload(
+//       "https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",
+//       {
+//         public_id: "shoes",
+//       }
+//     )
+//     .catch((error) => {
+//       console.log(error);
+//     });
 
-  console.log(uploadResult);
+//   console.log(uploadResult);
 
 
 
   const uploadOnCloudinary = async (localFilePath) =>{
     try {
         if(!localFilePath) return null
-        cloudinary.uploader.upload(localFilePath ,{
+
+        const response  = await cloudinary.uploader.upload(localFilePath ,{
             resource_type : "auto"
         })
 
         console.log("file uploaded" , response.url);
+        fs.unlinkSync(localFilePath)
         return response
         
     } catch (error) {

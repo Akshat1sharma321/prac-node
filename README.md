@@ -656,3 +656,167 @@ Apply business logic
 Talk to DB
 
 Send response
+
+
+
+// multer uploads the file in the form of array so we access it using tha 0 index 
+
+
+
+This is core backend understanding, so let’s explain it from request → controller, step by step.
+
+🔑 Short Answer
+
+You get req.body in the controller because middleware runs before the controller and parses the request body, then attaches it to req.body.
+
+🧠 Full Flow (Very Important)
+
+When a client sends a request like:
+
+POST /register
+Content-Type: multipart/form-data
+Body:
+  fullname=Akshat
+  email=aks@gmail.com
+  password=123456
+  username=akshat
+  avatar=<file>
+
+
+The request goes through multiple layers before it reaches your controller.
+
+🔁 Request Flow in Your App
+Client (Postman / Frontend)
+   ↓
+Express App
+   ↓
+Body Parsing Middleware (express / multer)
+   ↓
+Route Middleware (multer)
+   ↓
+Controller (registerUser)
+
+🧩 Where does req.body come from?
+👉 It is NOT created by Express automatically
+
+It is created by middleware.
+
+Depending on the request type, different middleware fills req.body.
+
+🟢 In YOUR CASE (Important)
+
+You are using:
+
+upload.fields([...])
+
+
+This comes from multer.
+
+Multer does TWO things:
+
+Parses multipart/form-data
+
+Attaches:
+
+text fields → req.body
+
+files → req.files
+
+📦 What multer does internally
+
+When multer sees this request:
+
+Content-Type: multipart/form-data
+
+
+It:
+
+Reads the raw request stream
+
+Separates text fields & files
+
+Saves files to disk
+
+Builds objects:
+
+req.body = {
+  fullname: "Akshat",
+  email: "aks@gmail.com",
+  password: "123456",
+  username: "akshat"
+};
+
+req.files = {
+  avatar: [ { path: "uploads/..." } ],
+  coverImage: [ { path: "uploads/..." } ]
+};
+
+🧠 Why controller can access it
+
+Because in your route:
+
+router.post(
+  "/register",
+  upload.fields([...]), // 👈 runs first
+  registerUser          // 👈 runs after
+);
+
+
+Middleware always runs before the controller.
+
+So by the time registerUser executes:
+
+req.body is already populated
+
+req.files is already populated
+
+🔍 What if multer was NOT used?
+
+Then:
+
+req.body === undefined
+
+
+Unless you use another body parser.
+
+🧪 Different body parsers & req.body
+1️⃣ JSON requests
+app.use(express.json());
+
+
+For:
+
+Content-Type: application/json
+
+2️⃣ URL-encoded forms
+app.use(express.urlencoded({ extended: true }));
+
+
+For:
+
+Content-Type: application/x-www-form-urlencoded
+
+3️⃣ File uploads (YOUR CASE)
+upload.fields([...])
+
+
+For:
+
+Content-Type: multipart/form-data
+
+⚠️ Common Mistake (Important)
+
+❌ Forgetting middleware:
+
+app.post("/register", registerUser); // req.body undefined
+
+
+✅ Correct:
+
+app.post("/register", upload.fields([...]), registerUser);
+
+🎯 Interview-Ready Explanation
+
+“req.body is populated by middleware like express.json() or multer before the controller runs. In multipart requests, multer parses text fields into req.body and files into req.files.”
+
+// In postman create collection and then add variable of the common part which is used in every api call and then use it and share it 

@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      reuired: true,
+      required: true,
     },
     coverImage: {
       type: String,
@@ -44,18 +44,18 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
     },
-    refreshToke : {
+    refreshToken : {
         type : String ,
     }
   },
-  { timesStamps: true }
+  { timestamps: true }
 );
 
 
 UserSchema.pre("save" ,  async function (next) {
-    if(!this.isModified("password")) return next() ; 
+    if(!this.isModified("password")) return  ; 
     this.password = await bcrypt.hash(this.password , 10)
-    next()
+    // next()
 })
 
 UserSchema.methods.isPasswordCorrect = async function (password) {
