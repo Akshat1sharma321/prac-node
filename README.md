@@ -820,3 +820,5 @@ app.post("/register", upload.fields([...]), registerUser);
 “req.body is populated by middleware like express.json() or multer before the controller runs. In multipart requests, multer parses text fields into req.body and files into req.files.”
 
 // In postman create collection and then add variable of the common part which is used in every api call and then use it and share it 
+
+// ham user ko logout nhi kar paarhe the isliye hame middlware banana pada although ham middleware wala kaam directly controller me kar sakte the but ye verifyJWT kaafi jagah use hoga like agar koi post daalrha hoga tab bhi ya koi like kar rha hoga tab bhi isliye we made the middleware

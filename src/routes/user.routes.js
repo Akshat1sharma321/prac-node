@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { logInUser, logoutUser, refreshAccessToken, registerUser } from "../controllers/user.controller.js";
 
 import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router() ;
 
@@ -15,4 +16,12 @@ router.route("/register").post(
     }]) ,
     registerUser)
 
+
+router.route("/login").post(logInUser)
+
+router.route("/logout").post(verifyJWT, logoutUser)
+
+router.route("/refresh-token").post(refreshAccessToken)
+
+// we use next so that we will not be confused to run which method 1st and which method later like here  verifyJWT will be run 1st and then logoutUser will take place 
 export default router ; 
